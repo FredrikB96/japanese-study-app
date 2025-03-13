@@ -10,6 +10,11 @@ WordItem::WordItem(int id, std::string Kanji,std::string kana,  std::string Tran
     this->SentenceTS = SentanceTS;
 }
 
+int WordItem::getID()
+{
+    return this->ID;
+}
+
 std::string WordItem::getKanji()
 {
     return this->Kanji;
