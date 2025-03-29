@@ -31,10 +31,13 @@ static std::vector<Word> LoadFile(std::string filepath,char delimiter)
             delete f;
         }
         );
+    std::cout << "Trying to open file: " << fs::absolute(filepath) << std::endl;
 
-    // Reset the stream position
-    iFile->clear();  // Clear EOF flag
-    iFile->seekg(0, std::ios::beg);
+
+    if(iFile->is_open())
+        std::cout << "File open!" << std::endl;
+    else
+        std::cout << "File closed!" << std::endl;
 
     std::vector<Word> words;
     try {

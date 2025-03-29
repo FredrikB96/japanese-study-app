@@ -18,11 +18,16 @@ MainWindow::MainWindow(QWidget *parent)
             ui->ModuleList->addItem(new QListWidgetItem(QString::fromStdString(module), ui->ModuleList));
     }
 
-    std::string path = "Takoboto.txt";
+    std::string path = "C:/Users/blomg/Documents/QT/Testing_Projects/Japanese_Study/Takoboto.txt";
 
     std::vector<Word> words = FileManager::LoadFile(path,'\t');
     std::vector<Word> filtered;
     std::copy_if(words.begin(), words.end(), std::back_inserter(filtered), [](Word i) { return i.word_group & (1 << I_ADJ); });
+
+    for(Word word : filtered)
+    {
+        ui->ModuleList->addItem(new QListWidgetItem(QString::fromStdString(word.word),ui->ModuleList));
+    }
 }
 
 MainWindow::~MainWindow()
@@ -37,6 +42,7 @@ void MainWindow::on_ModuleList_itemDoubleClicked(QListWidgetItem *item)
     if(item->text() == "Matching")
         int i = 4;
 }
+
 
 
 
